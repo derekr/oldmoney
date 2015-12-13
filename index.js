@@ -27,10 +27,8 @@ function incomingRoute (req, res) {
     console.log(req.body)
     resp = new twilio.TwimlResponse()
     resp.say('Hey there!')
-    res.writeHead(200, {
-      'Content-Type':'text/xml'
-    })
-    res.end(resp.toString())
+    res.type('text/xml')
+    res.send(resp.toString())
 }
 
 app.post('/incoming', webhook, incomingRoute)
