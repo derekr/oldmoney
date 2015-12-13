@@ -23,14 +23,18 @@ app.get('/status', function (req, res) {
   res.send('Hello World!');
 })
 
-app.post('/incoming', webhook, function (req, res) {
-  console.log(req.body)
-  res.send('Hello World!');
-})
+function incomingRoute (req, res) {
+    console.log(req.body)
+    resp = new twilio.TwimlResponse()
+    resp.say('Hey there!')
+    res.writeHead(200, {
+      'Content-Type':'text/xml'
+    })
+    res.end(resp.toString())
+}
 
-app.post('/incoming-fallback', webhook, function (req, res) {
-  res.send('Hello World!');
-})
+app.post('/incoming', webhook, incomingRoute)
+app.post('/incoming-fallback', webhook, incomingRoute)
 
 app.get('/', function (req, res) {
   res.send('oldmoney!');
