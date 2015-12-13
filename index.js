@@ -24,6 +24,7 @@ app.get('/status', function (req, res) {
 })
 
 app.post('/incoming', webhook, function (req, res) {
+  console.log(req.body)
   res.send('Hello World!');
 })
 
