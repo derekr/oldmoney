@@ -26,7 +26,7 @@ app.get('/status', function (req, res) {
 function incomingRoute (req, res) {
     console.log(req.body)
     resp = new twilio.TwimlResponse()
-    resp.say('Hey there!')
+    resp.message('Hey there!')
     res.type('text/xml')
     res.send(resp.toString())
 }
