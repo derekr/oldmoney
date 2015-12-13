@@ -13,7 +13,7 @@ var authToken = process.env.TOKEN
 var twilio = require('twilio')
 var client = twilio(accountSid, authToken)
 
-var webhook = twilio.webhook(process.env.TOKEN)
+var webhook = twilio.webhook(authToken, { validate: false })
 
 app.use(bodyParser.urlencoded({
     extended: true
